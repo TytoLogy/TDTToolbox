@@ -1,0 +1,32 @@
+RX8_2_BinauralOutput_zBus.rpx Tags
+
+
+CycUse	OUT	clock cycle usage, %	(float)
+Enable	OUT	circuit enabled	(bool)
+mClock	OUT	circuit clock, # samples	(int)
+Reset		OUT	reset indicator	(bool)
+
+TTLPulseDur	IN	TTL pulse duration, # of samples	(int)
+
+SwPeriod	IN	duration of sweep, # samples	(int)	(50000)
+SwCount	IN	# of sweeps to run	(int)	(-1)
+StimDelay	IN	duration to delay stimulus output, # of samples	(int)
+StimDur	IN	duration of stimulus, # of samples	(int)
+StimGo	OUT	stimulus output trigger	(bool)
+SwpN	OUT	# of stimuli played	(int)
+SwpEnd	OUT	end of sweep trigger (bool)
+
+data_outL	IN	output data, Left channel	(float)
+data_outR	IN	output data, Right channel	(float)
+
+index_outL	OUT	# of samples played, Left channel	(int)
+nblocks_outL	OUT	# of data blocks played, Left channel	(int)
+
+index_outR	OUT	# of samples played, Right channel	(int)
+nblocks_outR	OUT	# of data blocks played, Right channel	(int)
+
+lChannel	IN	output channel for Left, 17-20	(int)	(17)
+rChannel	IN	output channel for Right, 17-20	(int)	(18)
+
+
+

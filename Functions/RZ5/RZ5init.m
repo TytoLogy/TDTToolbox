@@ -42,7 +42,7 @@ device_num = 1;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Make text upper case
 interface = upper(interface);
-if ~(strcmp(interface, 'GB') | strcmp(interface, 'USB'))
+if ~(strcmp(interface, 'GB') || strcmp(interface, 'USB'))
 	warning('%s: invalid interface, using GB', mfilename);
 	interface = 'GB';
 end

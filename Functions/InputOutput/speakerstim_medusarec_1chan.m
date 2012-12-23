@@ -41,7 +41,7 @@ RPtrig(indev, 3);
 
 % Set the output buffer length
 outpts = length(stim_lr);
-RPsettag(indev, 'StimDur', outpts);
+RPsettag(outdev, 'StimDur', outpts);
 
 % Load output buffer
 out_msg = RPwriteV(outdev, 'data_outL', stim_lr(1, :));

@@ -32,19 +32,16 @@ function [RPstruct] = RZ6init(interface, device_num)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Check if input arguments are ok
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if nargin ~= 1
-	disp([mfilename ': using defaults, GB'])
+if nargin == 0
+	disp([mfilename ': using defaults, GB & Dev 1'])
 	interface = 'GB';
+	device_num = 1;
+else
+	% Make text upper case
+	interface = upper(interface);
 end
-device_num = 1;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Make sure input args are in bounds
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Make text upper case
-interface = upper(interface);
-
-if ~(strcmp(interface, 'GB') | strcmp(interface, 'USB'))
+if ~(strcmp(interface, 'GB') || strcmp(interface, 'USB'))
 	warning([mfilename ': invalid interface, using GB']);
 	interface = 'GB';
 end

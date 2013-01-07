@@ -1,9 +1,9 @@
-function RPstruct = RZ5init(interface)
+function [RPstruct] = RZ6init(interface, device_num)
 %------------------------------------------------------------------------
-% RPstruct = RZ5init(interface)
+% [RPstruct] = RZ6init(interface, device_num)
 %------------------------------------------------------------------------
 % 
-% Initializes and connects to RZ5
+% Initializes and connects to RZ6
 % 
 %------------------------------------------------------------------------
 % Input Arguments:
@@ -23,27 +23,26 @@ function RPstruct = RZ5init(interface)
 % Sharad Shanbhag
 % sshanbhag@neoucom.edu
 %------------------------------------------------------------------------
-% Created: 26 July, 2010
-%				(modified from RZ5init)
+% Created: 21 March, 2011
+%			(modified from RX6init)
 % Modified:
+%	-	calls ConnectRZ6 method
 %------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Check if input arguments are ok
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if nargin ~= 1
-	disp([ mfilename ': using defaults, GB']);
+if nargin == 0
+	disp([mfilename ': using defaults, GB & Dev 1'])
 	interface = 'GB';
+	device_num = 1;
+else
+	% Make text upper case
+	interface = upper(interface);
 end
-device_num = 1;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Make sure input args are in bounds
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Make text upper case
-interface = upper(interface);
 if ~(strcmp(interface, 'GB') || strcmp(interface, 'USB'))
-	warning('%s: invalid interface, using GB', mfilename);
+	warning([mfilename ': invalid interface, using GB']);
 	interface = 'GB';
 end
 
@@ -56,17 +55,15 @@ set(RPstruct.handle, 'Visible', 'off');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initialize Device
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Create ActiveX control object
 RPstruct.C = actxcontrol('RPco.x',[5 5 26 26], RPstruct.handle);
 
 %Clears all the Buffers and circuits on that RP2
 % invoke(RPstruct.C, 'ClearCOF');
 RPstruct.C.ClearCOF;
 
-%connects RP2 via USB or Xbus given the proper device number
-% invoke(RPstruct.C,'ConnectRX5', interface, device_num);
-RPstruct.C.ConnectRZ5(interface, device_num);
+%connects RX6 via USB or Xbus given the proper device number
+RPstruct.C.ConnectRZ6(interface, device_num);
 
 % Since the device is not started, set status to 0
 RPstruct.status = 0;
-
+	

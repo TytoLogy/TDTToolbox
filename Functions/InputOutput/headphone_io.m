@@ -1,8 +1,11 @@
 function [resp, index] = headphone_io(iodev, stim_lr, inpts)
+%------------------------------------------------------------------------
 % [resp, index] = headphone_io(iodev, stim_lr, inpts)
+%------------------------------------------------------------------------
 % 
 % for use with RPVD circuit RX8_2_BinauralRefStimResponseFiltered
 % 
+%------------------------------------------------------------------------
 % Input Arguments:
 % 	iodev		TDT input/output device interface structure
 %	stim_lr	[2XN] stimulus array, L channel in row 1, R channel in row 2
@@ -14,12 +17,13 @@ function [resp, index] = headphone_io(iodev, stim_lr, inpts)
 % 				3 element response cell array if reference channel specified
 %	index		buffer size
 %
+%------------------------------------------------------------------------
 % See also: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 %  Sharad Shanbhag
-%	sshanbha@aecom.yu.edu
+%	sshanbhag@neomed.edu
 %------------------------------------------------------------------------
 % Created: ?
 %
@@ -27,6 +31,8 @@ function [resp, index] = headphone_io(iodev, stim_lr, inpts)
 %	3 September, 2009 (SJS):
 %		-	changed calls to eliminate use of invoke function
 %		-	revised documentation
+%	19 Feb 2013 (SJS)
+%	 -	cleaned up bits, updated comments
 %------------------------------------------------------------------------
 
 % maximum # of input and output points

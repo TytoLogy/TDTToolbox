@@ -39,8 +39,8 @@ function status = PA5setatten(PA5, atten_val)
 		warning('PA5setatten: bad arguments')
 		status = -1;
 		return;
-	end
-	if ~(PA5.status)
+    end
+    if ~(PA5.status)
 		warning('PA5 not active')
 	end
 

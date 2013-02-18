@@ -63,7 +63,7 @@ function status = zBUStrigA(zBUS, racknum, trigtype, delayms)
 % initiate the trigger
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 	status = invoke(zBUS.C,'zBusTrigA', racknum, trigtype, delayms);
-	status = zBUS.C.zBusTrigA(racknum, trigtype, delayms);
+status = zBUS.C.zBusTrigA(racknum, trigtype, delayms);
 
 
 

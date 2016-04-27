@@ -1,8 +1,11 @@
 function status = PA5setatten(PA5, atten_val)
+%------------------------------------------------------------------------
 % function status = PA5setatten(PA5, atten_val)
+%------------------------------------------------------------------------
 % 
 % sets PA5 attenuator
 % 
+%------------------------------------------------------------------------
 % Input Arguments:
 % 	PA5 	PA5 interface structure
 %		PA5.status		0 if unsuccessful, ActiveX control handle to device if successful
@@ -14,12 +17,13 @@ function status = PA5setatten(PA5, atten_val)
 % Output Arguments:
 % 	status			-1 if unsuccessful, dB val if successful
 %
-% See also: PA5init
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------
+% See also: PA5init, PA5getatten
+%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 % Sharad Shanbhag
-% sshanbha@aecom.yu.edu
+% sshanbhag@neomed.edu
 %------------------------------------------------------------------------
 % Created: 6 Feb 2008
 %
@@ -30,6 +34,7 @@ function status = PA5setatten(PA5, atten_val)
 % 			  other tdt init functions and compatible with RPclose() function
 % 		3 September, 2009 (SJS):
 % 			-	changed call to eliminate use of invoke function
+%	27 Apr 2016 (SJS): minor documentation updates
 %-------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

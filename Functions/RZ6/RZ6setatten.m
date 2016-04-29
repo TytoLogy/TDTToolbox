@@ -59,7 +59,7 @@ if ~between(atten_val, ATT_MIN, ATT_MAX)
 end
 
 % Set atten
-RPsettag('AttenL', atten_val(1));
-RPsettag('AttenR', atten_val(2));
-status = [RPgettag('AttenL') RPgettag('AttenR')];
+RPsettag(iodev, 'AttenL', atten_val(1));
+RPsettag(iodev, 'AttenR', atten_val(2));
+status = [RPgettag(iodev, 'AttenL') RPgettag(iodev, 'AttenR')];
 

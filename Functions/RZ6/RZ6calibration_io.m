@@ -23,7 +23,7 @@ function [resp, index] = RZ6calibration_io(iodev, stim_lr, inpts)
 
 %------------------------------------------------------------------------
 %  Sharad J. Shanbhag
-%	sshanbhag@neoucom.edu
+%	sshanbhag@neomed.edu
 %------------------------------------------------------------------------
 % Created: 22 March, 2011 (SJS) from RX6D1calibration_io.m
 %
@@ -52,12 +52,20 @@ end
 % send reset command (software trigger 3)
 RPtrig(iodev, 3);
 
+% set the sweep period to the desired # of input points
+RPsettag(iodev, 'SwPeriod', inpts);
+% set the sweep count to 1
+RPsettag(iodev, 'SwCount', 1);
+% set the input buffer points
+RPsettag(iodev, 'SwPeriod', inpts);
 % Set the output buffer length
 RPsettag(iodev, 'StimDur', outpts);
+% set delay to zero
+RPsettag(iodev, 'StimDelay', 0);
 
 % Load output buffer
-out_msg = RPwriteV(iodev, 'data_outL', stim_lr(1, :));
-out_msg = RPwriteV(iodev, 'data_outR', stim_lr(2, :));
+RPwriteV(iodev, 'data_outL', stim_lr(1, :));
+RPwriteV(iodev, 'data_outR', stim_lr(2, :));
 
 % send the Soft trigger 1 to start
 % (see circuit for details)
@@ -68,7 +76,8 @@ sweep_end = RPgettag(iodev, 'SwpEnd');
 while(sweep_end==0)
 	sweep_end = RPgettag(iodev, 'SwpEnd');
 end
-sweepCount = RPgettag(iodev, 'SwpN');
+% Not needed:
+% sweepCount = RPgettag(iodev, 'SwpN');
 
 %%%%%%%%%%%%%%%%%%
 % Stop Playing

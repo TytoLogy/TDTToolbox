@@ -22,6 +22,14 @@ function status = zBUStrigB_PULSE(zBUS, racknum, delayms)
 % Output Arguments:
 % 	status		0 if unsuccessful, 1 if succesful
 % 
+% NOTE (2017):
+% In v57 and above, a zero will be returned even if the trigger is actually
+% generated correctly. There are two ways to monitor the actual results. In
+% your RPvdsEx circuit: Link the output of the zTrig component to a digital
+% output on the device. This will allow the trigger result to be viewed on
+% the front panel of the device. Link a parameter tag to the output of the
+% zTrig component and read this tag in MATLAB, to view the
+% results.
 %------------------------------------------------------------------------
 % See Also: zBUSTrigB, zBUSinit, zBUSclose, zBUSTrigB_ON, zBUSTrigB_OFF, 
 %				RPtrig

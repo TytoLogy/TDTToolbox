@@ -1,8 +1,9 @@
-function RPstruct = RZ5init(interface)
+function RPstruct = RZ5init(varargin)
 %------------------------------------------------------------------------
-% RPstruct = RZ5init(interface)
+% RPstruct = RZ5init(interface, device_num)
 %------------------------------------------------------------------------
-% 
+% TytoLogy:TDTToolbox
+%------------------------------------------------------------------------
 % Initializes and connects to RZ5
 % 
 %------------------------------------------------------------------------
@@ -21,21 +22,30 @@ function RPstruct = RZ5init(interface)
 
 %------------------------------------------------------------------------
 % Sharad Shanbhag
-% sshanbhag@neoucom.edu
+% sshanbhag@neomed.edu
 %------------------------------------------------------------------------
 % Created: 26 July, 2010
 %				(modified from RZ5init)
 % Modified:
+%	3 May 2016 (SJS): fixed odd checking of input args.
 %------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Check if input arguments are ok
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if nargin ~= 1
-	disp([ mfilename ': using defaults, GB']);
+if nargin == 0
+	disp([ mfilename ': using defaults, interface = GB, device_num = 1']);
 	interface = 'GB';
+	device_num = 1;
+elseif nargin == 1
+	interface = upper(varargin{1});
+	device_num = 1;
+elseif nargin == 2;
+	interface = upper(varargin{1});
+	device_num = varargin{2};
+else
+	error('%s: bad input arguments', mfilename);
 end
-device_num = 1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Make sure input args are in bounds

@@ -10,7 +10,8 @@ function status = RPload(iodev)
 % Input Arguments:
 % 	iodev			device interface structure
 %		iodev.C					->	activeX control handle
-%		iodev.Circuit_Path	->	path to circuits directory (.rco files) (default = 'C:\TDT')
+%		iodev.Circuit_Path	->	path to circuits directory (.rco files) 
+%																	(default = 'C:\TDT')
 %		iodev.Circuit_Name	->	circuit name (no default)
 %		iodev.Dnum				-> device ID number
 %
@@ -89,7 +90,12 @@ if isempty(ext)
 		% .rcx file found, append .rcx to file name
 		disp([mfilename ': .rcx file found (' [rcfile '.rcx'] ')'])
 		rcfile = [rcfile '.rcx'];
-	end			
+	end
+elseif ~exist(rcfile, 'file')
+	error('%s: cannot find file %s', mfilename, rcfile);
+else
+	% .rcx file found, append .rcx to file name
+	disp([mfilename ': .rcx file found (' rcfile ')'])
 end
 %------------------------------------------------------------------------
 % Get to work!

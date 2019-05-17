@@ -1,0 +1,12 @@
+testing use of FIR filter with RZ6 for output correction
+
+1 channel of FIR ok with 256, 512 pts.  1024 overloads
+
+2 channel: 256 ok 512 overload
+
+
+
+possible to change RZ6_AudioOut macro to 1 channel?
+
+
+
